@@ -1,6 +1,6 @@
 import express, { json, response } from "express";
 
-import { rotasCategorias } from "./rotas/categorias.rotas";
+import { rotasCategorias } from "./routes/categorias.rotas";
 
 const app = express();
 
