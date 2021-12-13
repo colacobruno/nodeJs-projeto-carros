@@ -2,13 +2,22 @@ import { Categoria } from "../../models/Categoria";
 import {
   ICadastroCategoriaDTO,
   ICategoriasRepository,
-} from "./ICategoriasRepository";
+} from "../ICategoriasRepository";
 
 class CategoriasRepository implements ICategoriasRepository {
   private categorias: Categoria[];
 
-  constructor() {
+  private static INSTANCE: CategoriasRepository;
+
+  private constructor() {
     this.categorias = [];
+  }
+
+  public static getInstance(): CategoriasRepository {
+    if (!CategoriasRepository.INSTANCE) {
+      CategoriasRepository.INSTANCE = new CategoriasRepository();
+    }
+    return CategoriasRepository.INSTANCE;
   }
 
   cadastrar({ nome, descricao }: ICadastroCategoriaDTO): void {

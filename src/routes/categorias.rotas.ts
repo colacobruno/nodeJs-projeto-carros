@@ -1,29 +1,16 @@
 import { Router } from "express";
 
-import { CategoriasRepository } from "../repository/Categorias/CategoriasRepository";
-import { PostgresCategoriasRepository } from "../repository/PostgresCategoriasRepository";
-import { CadastroCategoriaService } from "../services/Categorias/CadastroCategoriaService";
+import { cadastroCategoriaController } from "../modules/carros/useCases/categorias/cadastroCategoria";
+import { listarCategoriasController } from "../modules/carros/useCases/categorias/listarCategorias";
 
-const rotasCategorias = Router();
-const categoriasRepository = new CategoriasRepository();
-// const categoriasRepository = new PostgresCategoriasRepository();
+const categoriasRotas = Router();
 
-rotasCategorias.post("/", (request, response) => {
-  const { nome, descricao } = request.body;
-
-  const cadastroCategoriaService = new CadastroCategoriaService(
-    categoriasRepository
-  );
-
-  cadastroCategoriaService.execute({ nome, descricao });
-
-  return response.status(201).send();
+categoriasRotas.post("/", (request, response) => {
+  return cadastroCategoriaController.handle(request, response);
 });
 
-rotasCategorias.get("/", (request, response) => {
-  const todas = categoriasRepository.listar();
-
-  return response.json(todas);
+categoriasRotas.get("/", (request, response) => {
+  return listarCategoriasController.handle(request, response);
 });
 
-export { rotasCategorias };
+export { categoriasRotas };
