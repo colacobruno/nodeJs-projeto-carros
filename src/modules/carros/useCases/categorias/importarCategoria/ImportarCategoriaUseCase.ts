@@ -5,7 +5,9 @@ class ImportarCategoriaUseCase {
   execute(file: Express.Multer.File): void {
     const stream = fs.createReadStream(file.path); // fazer leitura do arquivo em partes
 
-    const parseFile = parse();
+    const parseFile = parse({
+      delimiter: ",",
+    });
 
     stream.pipe(parseFile);
 
