@@ -10,4 +10,4 @@ const importarCategoriaController = new ImportarCategoriaController(
   importarCategoriaUseCase
 );
 
-export { ImportarCategoriaController };
+export { importarCategoriaController };
