@@ -1,0 +1,81 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentação API",
+    "description": "Essa é uma API da trilha de node da rocketseat.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "bruno@colaco.com.br"
+    }
+  },
+  "paths": {
+    "/categorias": {
+      "post": {
+        "tags": [
+          "Categoria"
+        ],
+        "summary": "Criar uma nova categoria",
+        "description": "Endpoint que permite criar uma nova categoria informando o nome e descrição. OBS: Não é aceito nomes de categoria que sejam repetidos",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "nome": "SUV",
+                  "descricao": "Veículo utilitário esportivo"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Essa categoria já existe !"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Categoria"
+        ],
+        "summary": "Listar todas as categorias",
+        "description": "Listagem de todas as categorias",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string"
+                      },
+                      "descricao": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

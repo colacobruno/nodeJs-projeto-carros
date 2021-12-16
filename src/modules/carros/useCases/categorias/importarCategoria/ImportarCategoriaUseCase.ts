@@ -31,6 +31,7 @@ class ImportarCategoriaUseCase {
           });
         })
         .on("end", () => {
+          fs.promises.unlink(file.path); // removendo o arquivo depois de finalizar a importação
           resolve(categorias);
         })
         .on("error", (err) => {
