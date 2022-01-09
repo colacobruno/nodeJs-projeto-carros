@@ -1,16 +1,15 @@
 import { Router } from "express";
 
-import { listarCategoriasController } from "../modules/carros/useCases/categorias/listarCategorias";
-import { cadastroEspecificacaoController } from "../modules/carros/useCases/especificacoes/cadastroEspecificacao";
+import { CadastroEspecificacaoController } from "../modules/carros/useCases/especificacoes/cadastroEspecificacao/CadastroEspecificacaoController";
+import { ListarEspecificacoesController } from "../modules/carros/useCases/especificacoes/listarEspecificacoes/ListarEspecificacoesController";
 
 const especificacoesRotas = Router();
 
-especificacoesRotas.post("/", (request, response) => {
-  return cadastroEspecificacaoController.handle(request, response);
-});
+const cadastroEspecificacaoController = new CadastroEspecificacaoController();
+const listarEspecificacaoController = new ListarEspecificacoesController();
 
-especificacoesRotas.get("/", (request, response) => {
-  return listarCategoriasController.handle(request, response);
-});
+especificacoesRotas.post("/", cadastroEspecificacaoController.handle);
+
+especificacoesRotas.get("/", listarEspecificacaoController.handle);
 
 export { especificacoesRotas };

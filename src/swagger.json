@@ -76,6 +76,74 @@
           }
         }
       }
+    },
+    "/categorias/import": {
+      "post": {
+        "tags": [
+          "Categoria"
+        ],
+        "summary": "Upload de nova categoria",
+        "description": "Endpoint que permite criar uma nova categoria inserindo o arquivo csv do mesmo modelo do cadastro",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado"
+          }
+        }
+      }
+    },
+    "/especificacoes": {
+      "post": {
+        "tags": [
+          "Especificações"
+        ],
+        "summary": "Cria uma nova especificação",
+        "description": "Endpoint que permite criar uma nova especificação informando o nome e descrição. OBS: Não é aceito nome de especificação que seja repetido",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definicoes/Especificacao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Essa especificação já existe !"
+          }
+        }
+      }
+    }
+  },
+  "definicoes": {
+    "Especificacao": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "descricao": {
+          "type": "string"
+        }
+      }
     }
   }
 }

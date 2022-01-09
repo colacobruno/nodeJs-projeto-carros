@@ -1,3 +1,5 @@
+import { inject, injectable } from "tsyringe";
+
 import { IEspecificacoesRepository } from "../../../repository/IEspecificacoesRepositry";
 
 interface IRequest {
@@ -5,17 +7,22 @@ interface IRequest {
   descricao: string;
 }
 
+@injectable()
 class CadastroEspecificacaoUseCase {
-  constructor(private especificacaoRepository: IEspecificacoesRepository) {}
-  execute({ nome, descricao }: IRequest): void {
+  constructor(
+    @inject("EspecificacoesRepository")
+    private especificacaoRepository: IEspecificacoesRepository
+  ) {}
+
+  async execute({ nome, descricao }: IRequest): Promise<void> {
     const existeEspecificacao =
-      this.especificacaoRepository.pesquisarPorNome(nome);
+      await this.especificacaoRepository.pesquisarPorNome(nome);
 
     if (existeEspecificacao) {
       throw new Error("Essa especificação já existe !");
     }
 
-    this.especificacaoRepository.cadastrar({ nome, descricao });
+    await this.especificacaoRepository.cadastrar({ nome, descricao });
   }
 }
 

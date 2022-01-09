@@ -1,15 +1,19 @@
 import { Response, Request } from "express";
+import { container } from "tsyringe";
 
 import { ImportarCategoriaUseCase } from "./ImportarCategoriaUseCase";
 
 class ImportarCategoriaController {
-  constructor(private importarCategoriaUseCase: ImportarCategoriaUseCase) {}
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { file } = request;
 
-    this.importarCategoriaUseCase.execute(file);
+    const importarCategoriaUseCase = container.resolve(
+      ImportarCategoriaUseCase
+    );
 
-    return response.send();
+    await importarCategoriaUseCase.execute(file);
+
+    return response.status(201).send();
   }
 }
 

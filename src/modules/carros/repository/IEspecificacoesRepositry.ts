@@ -6,9 +6,9 @@ interface ICadastroEspecificacaoDTO {
 }
 
 interface IEspecificacoesRepository {
-  cadastrar({ nome, descricao }: ICadastroEspecificacaoDTO): void;
-  listar(): Especificacao[];
-  pesquisarPorNome(nome: string): Especificacao;
+  pesquisarPorNome(nome: string): Promise<Especificacao>;
+  listar(): Promise<Especificacao[]>;
+  cadastrar({ nome, descricao }: ICadastroEspecificacaoDTO): Promise<void>;
 }
 
 export { IEspecificacoesRepository, ICadastroEspecificacaoDTO };
