@@ -1,43 +1,35 @@
-import { Categoria } from "../../models/Categoria";
+import { getRepository, Repository } from "typeorm";
+
+import { Categoria } from "../../entities/Categoria";
 import {
   ICadastroCategoriaDTO,
   ICategoriasRepository,
 } from "../ICategoriasRepository";
 
 class CategoriasRepository implements ICategoriasRepository {
-  private categorias: Categoria[];
+  private repository: Repository<Categoria>;
 
-  private static INSTANCE: CategoriasRepository;
-
-  private constructor() {
-    this.categorias = [];
+  constructor() {
+    this.repository = getRepository(Categoria);
   }
 
-  public static getInstance(): CategoriasRepository {
-    if (!CategoriasRepository.INSTANCE) {
-      CategoriasRepository.INSTANCE = new CategoriasRepository();
-    }
-    return CategoriasRepository.INSTANCE;
-  }
-
-  cadastrar({ nome, descricao }: ICadastroCategoriaDTO): void {
-    const categoria = new Categoria();
-    Object.assign(categoria, {
-      nome,
+  async cadastrar({ nome, descricao }: ICadastroCategoriaDTO): Promise<void> {
+    const categoria = this.repository.create({
       descricao,
-      criado_em: new Date(),
+      nome,
     });
-    this.categorias.push(categoria);
+
+    await this.repository.save(categoria);
   }
 
-  listar(): Categoria[] {
-    return this.categorias;
+  async listar(): Promise<Categoria[]> {
+    const categorias = await this.repository.find();
+    return categorias;
   }
 
-  pesquisarPorNome(nome: string): Categoria {
-    const categoria = this.categorias.find(
-      (categoria) => categoria.nome === nome
-    );
+  async pesquisarPorNome(nome: string): Promise<Categoria> {
+    // Select * from categorias where nome = "nome" limit 1
+    const categoria = await this.repository.findOne({ nome });
     return categoria;
   }
 }

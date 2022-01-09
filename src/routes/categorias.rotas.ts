@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from "multer";
 
-import { cadastroCategoriaController } from "../modules/carros/useCases/categorias/cadastroCategoria";
+import { CadastroCategoriaController } from "../modules/carros/useCases/categorias/cadastroCategoria/CadastroCategoriaController";
 import { listarCategoriasController } from "../modules/carros/useCases/categorias/listarCategorias";
 import { importarCategoriaController } from "../modules/carros/useCases/categorias/importarCategoria";
 
@@ -11,9 +11,9 @@ const upload = multer({
   dest: "./tmp",
 });
 
-categoriasRotas.post("/", (request, response) => {
-  return cadastroCategoriaController.handle(request, response);
-});
+const cadastroCategoriaController = new CadastroCategoriaController();
+
+categoriasRotas.post("/", cadastroCategoriaController.handle);
 
 categoriasRotas.get("/", (request, response) => {
   return listarCategoriasController.handle(request, response);

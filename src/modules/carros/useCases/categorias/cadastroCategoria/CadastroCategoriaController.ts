@@ -1,14 +1,18 @@
 import { Response, Request } from "express";
+import { container } from "tsyringe";
 
 import { CadastroCategoriaUseCase } from "./CadastroCategoriaUseCase";
 
 class CadastroCategoriaController {
-  constructor(private cadastroCategoriaUseCase: CadastroCategoriaUseCase) {}
-
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { nome, descricao } = request.body;
 
-    this.cadastroCategoriaUseCase.execute({ nome, descricao });
+    // Fazendo a injeção de dependencia
+    const cadastroCategoriaUseCase = container.resolve(
+      CadastroCategoriaUseCase
+    );
+
+    await cadastroCategoriaUseCase.execute({ nome, descricao });
 
     return response.status(201).send();
   }

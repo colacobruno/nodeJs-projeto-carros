@@ -1,3 +1,5 @@
+import { inject, injectable } from "tsyringe";
+
 import { ICategoriasRepository } from "../../../repository/ICategoriasRepository";
 
 interface IRequest {
@@ -5,11 +7,20 @@ interface IRequest {
   descricao: string;
 }
 
+@injectable() // Permite que a classe seja injetada
 class CadastroCategoriaUseCase {
-  constructor(private categoriasRepository: ICategoriasRepository) {}
+  constructor(
+    // Irá no arquivo index.ts do container e vai criar a instancia de acordo com o nome que achar
+    // no caso é a de CategoriasRepository
+    // feito isso, não será mais neessário ficar dando new nessa classe
+    @inject("CategoriasRepository")
+    private categoriasRepository: ICategoriasRepository
+  ) {}
 
-  execute({ nome, descricao }: IRequest): void {
-    const existeCategoria = this.categoriasRepository.pesquisarPorNome(nome);
+  async execute({ nome, descricao }: IRequest): Promise<void> {
+    const existeCategoria = await this.categoriasRepository.pesquisarPorNome(
+      nome
+    );
 
     if (existeCategoria) {
       throw new Error("Essa categoria já existe");

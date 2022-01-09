@@ -1,4 +1,4 @@
-import { Especificacao } from "../../../models/Especificacao";
+import { Especificacao } from "../../../entities/Especificacao";
 import { IEspecificacoesRepository } from "../../../repository/IEspecificacoesRepositry";
 
 class ListarEspecificacoesUseCase {

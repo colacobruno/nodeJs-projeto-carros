@@ -1,4 +1,4 @@
-import { Categoria } from "../models/Categoria";
+import { Categoria } from "../entities/Categoria";
 
 interface ICadastroCategoriaDTO {
   nome: string;
@@ -6,9 +6,9 @@ interface ICadastroCategoriaDTO {
 }
 
 interface ICategoriasRepository {
-  pesquisarPorNome(nome: string): Categoria;
-  listar(): Categoria[];
-  cadastrar({ nome, descricao }: ICadastroCategoriaDTO): void;
+  pesquisarPorNome(nome: string): Promise<Categoria>;
+  listar(): Promise<Categoria[]>;
+  cadastrar({ nome, descricao }: ICadastroCategoriaDTO): Promise<void>;
 }
 
 export { ICategoriasRepository, ICadastroCategoriaDTO };

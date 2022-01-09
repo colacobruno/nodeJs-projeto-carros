@@ -1,15 +1,17 @@
-import { CategoriasRepository } from "../../../repository/implementacoes/CategoriasRepository";
-import { CadastroCategoriaController } from "./CadastroCategoriaController";
-import { CadastroCategoriaUseCase } from "./CadastroCategoriaUseCase";
+// import { CategoriasRepository } from "../../../repository/implementacoes/CategoriasRepository";
+// import { CadastroCategoriaController } from "./CadastroCategoriaController";
+// import { CadastroCategoriaUseCase } from "./CadastroCategoriaUseCase";
 
-const categoriasRepository = CategoriasRepository.getInstance();
+// // Transformar em função para ter controle de quando é executado
+// export default (): CadastroCategoriaController => {
+//   const categoriasRepository = new CategoriasRepository();
 
-const cadastroCategoriaUseCase = new CadastroCategoriaUseCase(
-  categoriasRepository
-);
+//   const cadastroCategoriaUseCase = new CadastroCategoriaUseCase(
+//     categoriasRepository
+//   );
 
-const cadastroCategoriaController = new CadastroCategoriaController(
-  cadastroCategoriaUseCase
-);
-
-export { cadastroCategoriaController };
+//   const cadastroCategoriaController = new CadastroCategoriaController(
+//     cadastroCategoriaUseCase
+//   );
+//   return cadastroCategoriaController;
+// };
