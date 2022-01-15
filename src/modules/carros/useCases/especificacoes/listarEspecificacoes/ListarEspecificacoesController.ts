@@ -9,8 +9,10 @@ class ListarEspecificacoesController {
       ListarEspecificacoesUseCase
     );
     const todas = await listarEspecificacoesUseCase.execute();
+    const todas2 = todas && console.log("oi 2");
+    console.log("oi");
 
-    return response.json(todas);
+    return response.json(todas2);
   }
 }
 export { ListarEspecificacoesController };
