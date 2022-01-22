@@ -1,5 +1,6 @@
+import { AppError } from './../../../../errors/AppError';
+import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
-import { hash } from "bcrypt";
 
 import { ICadastroUsuarioDTO } from "../../dtos/ICadastroUsuarioDTO";
 import { IUsuariosRepository } from "../../repository/IUsuariosRepository";
@@ -17,6 +18,14 @@ class CadastroUsuarioUseCase {
     cnh,
     senha,
   }: ICadastroUsuarioDTO): Promise<void> {
+    const usuarioExistente = await this.usuariosRepository.procurarPorEmail(
+      email
+    );
+
+    if (usuarioExistente) {
+      throw new AppError("Usuário já existe !", 400);
+    }
+
     const senhaHash = await hash(senha, 8);
 
     await this.usuariosRepository.cadastrar({

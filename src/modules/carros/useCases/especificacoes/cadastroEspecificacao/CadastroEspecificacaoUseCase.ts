@@ -1,3 +1,4 @@
+import { AppError } from './../../../../../errors/AppError';
 import { inject, injectable } from "tsyringe";
 
 import { IEspecificacoesRepository } from "../../../repository/IEspecificacoesRepositry";
@@ -19,7 +20,7 @@ class CadastroEspecificacaoUseCase {
       await this.especificacaoRepository.pesquisarPorNome(nome);
 
     if (existeEspecificacao) {
-      throw new Error("Essa especificação já existe !");
+      throw new AppError("Essa especificação já existe !", 400);
     }
 
     await this.especificacaoRepository.cadastrar({ nome, descricao });
