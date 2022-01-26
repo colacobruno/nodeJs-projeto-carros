@@ -1,6 +1,7 @@
-import { AppError } from './../errors/AppError';
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
+
+import { AppError } from "../errors/AppError";
 import { UsuariosRepository } from "../modules/contas/repository/implementacoes/UsuariosRepository";
 
 interface IPayload {
@@ -38,6 +39,10 @@ export async function autenticado(
     if (!usuario) {
       throw new AppError("Usuário não existe !", 401);
     }
+
+    request.usuario = {
+      id: usuario_id,
+    };
 
     next();
   } catch {
