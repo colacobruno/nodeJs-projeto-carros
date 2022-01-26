@@ -1,14 +1,14 @@
 import { Router } from "express";
 import multer from "multer";
 
+import uploadConfid from "../config/upload";
+import { autenticado } from "../middlewares/autenticado";
 import { AtualizaAvatarUsuarioController } from "../modules/contas/useCases/atualizaAvatarUsuario/AtualizaAvatarUsuarioController";
 import { CadastroUsuarioController } from "../modules/contas/useCases/cadastroUsuario/CadastroUsuarioController";
 
 const usuariosRotas = Router();
 
-const upload = multer({
-  dest: "./avatar",
-});
+const uploadAvatar = multer(uploadConfid.upload("./tmp/avatar"));
 
 const cadastroUsuarioController = new CadastroUsuarioController();
 const atualizaAvatarUsuarioController = new AtualizaAvatarUsuarioController();
@@ -16,7 +16,8 @@ const atualizaAvatarUsuarioController = new AtualizaAvatarUsuarioController();
 usuariosRotas.post("/", cadastroUsuarioController.handle);
 usuariosRotas.patch(
   "/avatar",
-  upload.single("file"),
+  autenticado,
+  uploadAvatar.single("avatar"),
   atualizaAvatarUsuarioController.handle
 );
 
