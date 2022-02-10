@@ -1,6 +1,6 @@
 import { AppError } from "@errors/AppError";
+import { CategoriasRepositoryInMemory } from "@modules/carros/repository/in-memory/CategoriasRepositoryInMemory";
 
-import { CategoriasRepositoryInMemory } from "../../../repository/in-memory/CategoriasRepositoryInMemory";
 import { CadastroCategoriaUseCase } from "./CadastroCategoriaUseCase";
 
 let cadastroCategoriaUseCase: CadastroCategoriaUseCase;
