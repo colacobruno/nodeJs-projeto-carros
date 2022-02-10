@@ -1,6 +1,7 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Categoria } from "../../entities/Categoria";
+import { Categoria } from "@modules/carros/entities/Categoria";
+
 import {
   ICadastroCategoriaDTO,
   ICategoriasRepository,

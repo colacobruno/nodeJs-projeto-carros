@@ -1,7 +1,7 @@
-import { AppError } from './../../../../../errors/AppError';
 import { inject, injectable } from "tsyringe";
 
-import { ICategoriasRepository } from "../../../repository/ICategoriasRepository";
+import { AppError } from "@errors/AppError";
+import { ICategoriasRepository } from "@modules/carros/repository/ICategoriasRepository";
 
 interface IRequest {
   nome: string;
@@ -24,7 +24,7 @@ class CadastroCategoriaUseCase {
     );
 
     if (existeCategoria) {
-      throw new AppError("Essa categoria já existe", 400);
+      throw new AppError("Essa categoria já existe !", 400);
     }
 
     this.categoriasRepository.cadastrar({ nome, descricao });

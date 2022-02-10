@@ -1,6 +1,7 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Especificacao } from "../../entities/Especificacao";
+import { Especificacao } from "@modules/carros/entities/Especificacao";
+
 import {
   ICadastroEspecificacaoDTO,
   IEspecificacoesRepository,
