@@ -1,5 +1,5 @@
 import { ICadastroUsuarioDTO } from "../dtos/ICadastroUsuarioDTO";
-import { Usuario } from "../entities/Usuario";
+import { Usuario } from "../infra/typeorm/entities/Usuario";
 
 interface IUsuariosRepository {
   cadastrar(data: ICadastroUsuarioDTO): Promise<void>;

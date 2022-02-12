@@ -1,11 +1,11 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Especificacao } from "@modules/carros/entities/Especificacao";
+import { Especificacao } from "@modules/carros/infra/typeorm/entities/Especificacao";
 
 import {
   ICadastroEspecificacaoDTO,
   IEspecificacoesRepository,
-} from "../IEspecificacoesRepositry";
+} from "../../../repository/IEspecificacoesRepositry";
 
 class EspecificacoesRepository implements IEspecificacoesRepository {
   private repository: Repository<Especificacao>;

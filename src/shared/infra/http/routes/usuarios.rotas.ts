@@ -1,10 +1,11 @@
 import { Router } from "express";
 import multer from "multer";
 
-import uploadConfid from "../config/upload";
+import uploadConfid from "@config/upload";
+import { AtualizaAvatarUsuarioController } from "@modules/contas/useCases/atualizaAvatarUsuario/AtualizaAvatarUsuarioController";
+import { CadastroUsuarioController } from "@modules/contas/useCases/cadastroUsuario/CadastroUsuarioController";
+
 import { autenticado } from "../middlewares/autenticado";
-import { AtualizaAvatarUsuarioController } from "../modules/contas/useCases/atualizaAvatarUsuario/AtualizaAvatarUsuarioController";
-import { CadastroUsuarioController } from "../modules/contas/useCases/cadastroUsuario/CadastroUsuarioController";
 
 const usuariosRotas = Router();
 

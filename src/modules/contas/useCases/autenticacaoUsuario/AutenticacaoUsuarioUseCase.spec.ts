@@ -1,6 +1,6 @@
-import { AppError } from "@errors/AppError";
 import { ICadastroUsuarioDTO } from "@modules/contas/dtos/ICadastroUsuarioDTO";
 import { UsuarioRepositoryInMemory } from "@modules/contas/repository/in-memory/UsuarioRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
 
 import { CadastroUsuarioUseCase } from "../cadastroUsuario/CadastroUsuarioUseCase";
 import { AutenticacaoUsuarioUseCase } from "./AutenticacaoUsuarioUseCase";

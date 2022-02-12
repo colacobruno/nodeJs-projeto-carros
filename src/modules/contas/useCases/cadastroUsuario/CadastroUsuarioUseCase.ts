@@ -1,9 +1,9 @@
 import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "@errors/AppError";
 import { ICadastroUsuarioDTO } from "@modules/contas/dtos/ICadastroUsuarioDTO";
 import { IUsuariosRepository } from "@modules/contas/repository/IUsuariosRepository";
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
 class CadastroUsuarioUseCase {

@@ -1,4 +1,4 @@
-import { EspecificacoesRepository } from "../../../repository/implementacoes/EspecificacoesRepository";
+import { EspecificacoesRepository } from "../../../infra/typeorm/repository/EspecificacoesRepository";
 import { ListarEspecificacoesController } from "./ListarEspecificacoesController";
 import { ListarEspecificacoesUseCase } from "./ListarEspecificacoesUseCase";
 

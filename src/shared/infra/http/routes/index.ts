@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { autenticacaoRotas } from "./autenticacao.rotas";
 
+import { autenticacaoRotas } from "./autenticacao.rotas";
 import { categoriasRotas } from "./categorias.rotas";
 import { especificacoesRotas } from "./especificacoes.rotas";
 import { usuariosRotas } from "./usuarios.rotas";

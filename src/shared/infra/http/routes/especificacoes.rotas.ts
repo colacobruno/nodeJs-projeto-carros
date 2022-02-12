@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { autenticado } from "../middlewares/autenticado";
 
-import { CadastroEspecificacaoController } from "../modules/carros/useCases/especificacoes/cadastroEspecificacao/CadastroEspecificacaoController";
-import { ListarEspecificacoesController } from "../modules/carros/useCases/especificacoes/listarEspecificacoes/ListarEspecificacoesController";
+import { CadastroEspecificacaoController } from "@modules/carros/useCases/especificacoes/cadastroEspecificacao/CadastroEspecificacaoController";
+import { ListarEspecificacoesController } from "@modules/carros/useCases/especificacoes/listarEspecificacoes/ListarEspecificacoesController";
+
+import { autenticado } from "../middlewares/autenticado";
 
 const especificacoesRotas = Router();
 

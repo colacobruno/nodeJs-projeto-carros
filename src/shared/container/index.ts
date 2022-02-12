@@ -1,10 +1,10 @@
 import { container } from "tsyringe";
 
+import { CategoriasRepository } from "@modules/carros/infra/typeorm/repository/CategoriasRepository";
+import { EspecificacoesRepository } from "@modules/carros/infra/typeorm/repository/EspecificacoesRepository";
 import { ICategoriasRepository } from "@modules/carros/repository/ICategoriasRepository";
 import { IEspecificacoesRepository } from "@modules/carros/repository/IEspecificacoesRepositry";
-import { CategoriasRepository } from "@modules/carros/repository/implementacoes/CategoriasRepository";
-import { EspecificacoesRepository } from "@modules/carros/repository/implementacoes/EspecificacoesRepository";
-import { UsuariosRepository } from "@modules/contas/repository/implementacoes/UsuariosRepository";
+import { UsuariosRepository } from "@modules/contas/infra/typeorm/repository/UsuariosRepository";
 import { IUsuariosRepository } from "@modules/contas/repository/IUsuariosRepository";
 
 // ICategoriasRepository

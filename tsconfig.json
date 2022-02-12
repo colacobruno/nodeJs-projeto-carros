@@ -2,19 +2,16 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-
     "rootDir": "./",
-    
     "baseUrl": "./src",
     "paths": {
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"],
       "@shared/*": ["shared/*"],
       "@errors/*": ["errors/*"],
-      "@utils/*": ["utils/*"],
+      "@utils/*": ["utils/*"]
     },
     "esModuleInterop": true,
-
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,

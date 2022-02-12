@@ -1,4 +1,4 @@
-import { Categoria } from "../../entities/Categoria";
+import { Categoria } from "../../infra/typeorm/entities/Categoria";
 import {
   ICadastroCategoriaDTO,
   ICategoriasRepository,

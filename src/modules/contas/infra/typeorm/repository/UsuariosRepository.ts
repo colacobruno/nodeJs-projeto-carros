@@ -1,9 +1,9 @@
 import { getRepository, Repository } from "typeorm";
 
 import { ICadastroUsuarioDTO } from "@modules/contas/dtos/ICadastroUsuarioDTO";
-import { Usuario } from "@modules/contas/entities/Usuario";
+import { Usuario } from "@modules/contas/infra/typeorm/entities/Usuario";
 
-import { IUsuariosRepository } from "../IUsuariosRepository";
+import { IUsuariosRepository } from "../../../repository/IUsuariosRepository";
 
 class UsuariosRepository implements IUsuariosRepository {
   private repository: Repository<Usuario>;

@@ -3,9 +3,9 @@ import multer from "multer";
 
 import "reflect-metadata";
 
-import { CadastroCategoriaController } from "../modules/carros/useCases/categorias/cadastroCategoria/CadastroCategoriaController";
-import { ImportarCategoriaController } from "../modules/carros/useCases/categorias/importarCategoria/ImportarCategoriaController";
-import { ListarCategoriasController } from "../modules/carros/useCases/categorias/listarCategorias/ListarCategoriasController";
+import { CadastroCategoriaController } from "@modules/carros/useCases/categorias/cadastroCategoria/CadastroCategoriaController";
+import { ImportarCategoriaController } from "@modules/carros/useCases/categorias/importarCategoria/ImportarCategoriaController";
+import { ListarCategoriasController } from "@modules/carros/useCases/categorias/listarCategorias/ListarCategoriasController";
 
 const categoriasRotas = Router();
 
