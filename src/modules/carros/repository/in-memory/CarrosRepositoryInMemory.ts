@@ -1,6 +1,5 @@
 import { ICadastroCarroDTO } from "@modules/carros/dtos/ICadastroCarroDTO";
 import { Carro } from "@modules/carros/infra/typeorm/entities/Carro";
-import { Categoria } from "@modules/carros/infra/typeorm/entities/Categoria";
 import { ICarrosRepository } from "@modules/carros/repository/ICarrosRepository";
 
 class CarrosRepositoryInMemory implements ICarrosRepository {
