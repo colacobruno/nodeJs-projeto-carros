@@ -1,5 +1,6 @@
+import { Usuario } from "@modules/contas/infra/typeorm/entities/Usuario";
+
 import { ICadastroUsuarioDTO } from "../../dtos/ICadastroUsuarioDTO";
-import { Usuario } from "../../infra/typeorm/entities/Usuario";
 import { IUsuariosRepository } from "../IUsuariosRepository";
 
 class UsuarioRepositoryInMemory implements IUsuariosRepository {

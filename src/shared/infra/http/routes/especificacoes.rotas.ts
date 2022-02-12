@@ -1,5 +1,7 @@
 import { Router } from "express";
 
+import "reflect-metadata";
+
 import { CadastroEspecificacaoController } from "@modules/carros/useCases/especificacoes/cadastroEspecificacao/CadastroEspecificacaoController";
 import { ListarEspecificacoesController } from "@modules/carros/useCases/especificacoes/listarEspecificacoes/ListarEspecificacoesController";
 

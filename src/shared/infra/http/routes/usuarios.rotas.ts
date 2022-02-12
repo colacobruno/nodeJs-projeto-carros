@@ -1,4 +1,5 @@
 import { Router } from "express";
+import "reflect-metadata";
 import multer from "multer";
 
 import uploadConfid from "@config/upload";
