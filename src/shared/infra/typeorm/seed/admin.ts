@@ -10,9 +10,11 @@ async function create() {
   const senha = await hash("admin", 8);
 
   await conexao.query(
-    `INSERT INTO USER(id, nome, email, senha, admin, criado_em)
-      values('${id}', 'admin', 'admin@admin.com.br', '${senha}, true, ${new Date().getTime()})`
+    `INSERT INTO USER(id, nome, email, senha, admin, criado_em, cnh)
+      values('${id}', 'admin', 'admin@admin.com.br', '${senha}, true, 'now()', 'XXXXX')`
   );
+
+  await conexao.close();
 }
 
 create().then(() => console.log("Usuário admin criado!"));
